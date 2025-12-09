@@ -4,6 +4,7 @@ import Register from "./pages/register/Register";
 import Login from "./pages/login/Login";
 import Watch from "./pages/watch/Watch"; // <--- Import trang Watch
 import NewMovie from "./pages/admin/NewMovie";
+import Profile from "./pages/profile/Profile";
 import {
   BrowserRouter as Router,
   Routes,
@@ -21,6 +22,7 @@ const App = () => {
         {/* Thêm đường dẫn trang xem phim */}
         <Route path="/watch" element={<Watch />} />
         <Route path="/admin/add" element={<NewMovie />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </Router>
   );

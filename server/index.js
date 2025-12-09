@@ -8,6 +8,7 @@ const commentRoute = require("./routes/comments");
 const authRoute = require("./routes/auth");
 const movieRoute = require("./routes/movies");
 const listRoute = require("./routes/lists");
+const userRoute = require("./routes/users");
 
 dotenv.config();
 
@@ -33,3 +34,4 @@ app.listen(5000, () => {
     console.log("Server đang chạy tại http://localhost:5000");
 });
 app.use("/api/comments", commentRoute);
+app.use("/api/users", userRoute);
