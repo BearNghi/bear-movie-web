@@ -1,0 +1,40 @@
+.searchPage {
+    background-color: #0b0b0b;
+    min-height: 100vh;
+    color: white;
+    overflow-x: hidden;
+}
+
+.searchContainer {
+    padding-top: 100px;
+    /* Tránh bị Navbar che */
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
+.searchContainer h2 {
+    font-weight: 400;
+    margin-bottom: 30px;
+    color: #aaa;
+}
+
+.searchContainer h2 b {
+    color: white;
+}
+
+.searchGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.searchItem {
+    /* Tạo khoảng cách để ListItem hiển thị đẹp */
+    margin-right: 5px;
+    margin-bottom: 40px;
+}
+
+.noResult {
+    color: gray;
+    font-size: 20px;
+}

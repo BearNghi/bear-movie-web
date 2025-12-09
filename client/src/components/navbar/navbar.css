@@ -7,10 +7,8 @@
     z-index: 999;
     background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.3) 50%);
     transition: background-color 0.5s ease;
-    /* Hiệu ứng chuyển màu mượt mà */
 }
 
-/* Khi cuộn chuột xuống thì thêm class này */
 .navbar.scrolled {
     background-color: #0b0b0b;
 }
@@ -23,7 +21,6 @@
     justify-content: space-between;
 }
 
-/* Phần bên trái */
 .navbar .left {
     display: flex;
     align-items: center;
@@ -32,18 +29,17 @@
 
 .navbar .logo {
     color: #e50914;
-    /* Màu đỏ BearMovie */
     font-size: 25px;
     font-weight: bold;
     margin-right: 20px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .navbar .left span {
     cursor: pointer;
 }
 
-/* Phần bên phải */
 .navbar .right {
     display: flex;
     align-items: center;
@@ -55,6 +51,7 @@
     cursor: pointer;
 }
 
+/* QUAN TRỌNG: Dòng này giúp Avatar nhỏ lại */
 .navbar .right img {
     width: 30px;
     height: 30px;
@@ -63,27 +60,23 @@
     cursor: pointer;
 }
 
-/* Menu Profile (Dropdown) */
 .navbar .profile {
     position: relative;
-    /* Để menu con bám theo */
     cursor: pointer;
 }
 
 .navbar .profile .options {
     display: none;
-    /* Mặc định ẩn */
     background-color: #0b0b0b;
     border-radius: 5px;
     position: absolute;
     top: 30px;
-    /* Cách top một chút */
     right: 0;
     flex-direction: column;
     z-index: 1000;
+    border: 1px solid #333;
 }
 
-/* Khi di chuột vào profile thì hiện options */
 .navbar .profile:hover .options {
     display: flex;
 }
@@ -92,7 +85,6 @@
     padding: 10px 20px;
     cursor: pointer;
     white-space: nowrap;
-    /* Không xuống dòng */
 }
 
 .navbar .options span:hover {
@@ -100,6 +92,36 @@
 }
 
 .navbar .link {
-    text-decoration: none;
     color: white;
+    text-decoration: none;
+}
+
+/* --- PHẦN MỚI: Ô TÌM KIẾM --- */
+.searchBox {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border-radius: 5px;
+    transition: 0.4s;
+    background-color: transparent;
+}
+
+.searchBox.active {
+    background-color: #0b0b0b;
+    border: 1px solid white;
+}
+
+.searchBox input {
+    width: 0;
+    border: none;
+    background-color: transparent;
+    color: white;
+    outline: none;
+    transition: width 0.4s ease-in-out;
+    padding-left: 0;
+}
+
+.searchBox.active input {
+    width: 200px;
+    padding-left: 10px;
 }
