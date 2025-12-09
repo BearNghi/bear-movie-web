@@ -1,0 +1,151 @@
+/* Reset cơ bản */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.register {
+    width: 100vw;
+    height: 100vh;
+    /* Hình nền Pixel Rain / Matrix Style cực ngầu */
+    background: linear-gradient(to bottom,
+            rgba(0, 0, 0, 0.3) 0%,
+            /* Lớp phủ mờ nhẹ ở trên */
+            rgba(0, 0, 0, 0.8) 100%
+            /* Đen dần xuống dưới */
+        ),
+        /* Link ảnh online chất lượng cao */
+        url("https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop");
+
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    font-family: 'Segoe UI', sans-serif;
+    color: white;
+}
+
+/* Phần Logo ở trên cùng */
+.register .top {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    /* Đưa logo ra giữa */
+    align-items: center;
+}
+
+.register .logo {
+    color: #e50914;
+    /* Màu đỏ đặc trưng */
+    font-size: 35px;
+    /* Kích thước vừa phải */
+    font-weight: 800;
+    /* Chữ đậm */
+    text-transform: uppercase;
+    /* Viết hoa toàn bộ */
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+}
+
+/* Phần nội dung chính */
+.register .container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+}
+
+.register h1 {
+    font-size: 3rem;
+    /* Chữ to 50px */
+    font-weight: 700;
+    max-width: 800px;
+    margin-bottom: 15px;
+}
+
+.register h2 {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.register p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+/* Form đăng ký */
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 600px;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Nền đen mờ cho form dễ nhìn */
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.input-row input {
+    flex: 1;
+    /* Tự co giãn cho đều */
+    padding: 15px;
+    border-radius: 4px;
+    border: 1px solid #333;
+    font-size: 16px;
+    color: black;
+    outline: none;
+}
+
+/* Khi bấm vào ô nhập liệu thì viền sáng lên */
+.input-row input:focus {
+    border: 2px solid #e50914;
+}
+
+.registerButton {
+    padding: 12px;
+    background-color: #e50914;
+    /* Nút đỏ */
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.2s;
+}
+
+.registerButton:hover {
+    background-color: #f40612;
+    /* Sáng hơn khi di chuột */
+}
+
+.footer-login {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #aaa;
+}
+
+.footer-login .link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.footer-login .link:hover {
+    text-decoration: underline;
+}

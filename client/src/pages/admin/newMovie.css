@@ -1,0 +1,61 @@
+.newMovie {
+    flex: 4;
+    padding: 20px;
+    background-color: #0b0b0b;
+    color: white;
+    min-height: 100vh;
+}
+
+.addProductTitle {
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #e50914;
+}
+
+.backHome {
+    color: gray;
+    text-decoration: none;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.addProductForm {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.addProductItem {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.addProductItem label {
+    color: gray;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.addProductItem input {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+.addProductButton {
+    width: 200px;
+    margin-top: 30px;
+    background-color: #e50914;
+    color: white;
+    padding: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}

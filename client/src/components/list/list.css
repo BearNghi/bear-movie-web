@@ -1,0 +1,59 @@
+.list {
+    width: 100%;
+    margin-top: 10px;
+    font-family: 'Orbitron', sans-serif;
+    /* Font viễn tưởng */
+}
+
+.listTitle {
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 50px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px #00d4ff;
+    /* Chữ phát sáng nhẹ */
+}
+
+.list .wrapper {
+    position: relative;
+}
+
+.list .wrapper .container {
+    margin-left: 50px;
+    display: flex;
+    margin-top: 10px;
+    width: max-content;
+    transform: translateX(0px);
+    transition: all 1s ease;
+    /* Hiệu ứng trượt mượt mà */
+}
+
+/* Mũi tên điều hướng */
+.list .sliderArrow {
+    width: 50px;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    cursor: pointer;
+    z-index: 99;
+}
+
+.list .sliderArrow:hover {
+    background-color: rgba(0, 0, 0, 0.9);
+    color: #00d4ff;
+    /* Mũi tên chuyển xanh khi hover */
+}
+
+.list .sliderArrow.left {
+    left: 0;
+}
+
+.list .sliderArrow.right {
+    right: 0;
+}

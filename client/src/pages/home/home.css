@@ -1,0 +1,12 @@
+.home {
+    background-color: #0b0b0b;
+    overflow: hidden;
+    min-height: 200vh;
+    /* Làm trang dài ra để test cuộn chuột */
+}
+
+.test-content {
+    padding-top: 100px;
+    text-align: center;
+    color: white;
+}

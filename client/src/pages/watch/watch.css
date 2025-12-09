@@ -1,0 +1,67 @@
+.watch {
+    width: 100vw;
+    height: 100vh;
+    background-color: #0b0b0b;
+    position: relative;
+    overflow-y: auto;
+    /* Cho phép lăn chuột dọc để xem bình luận */
+    overflow-x: hidden;
+}
+
+/* Nút quay lại */
+.watch .back {
+    position: fixed;
+    /* Ghim nút này để khi lăn chuột nó vẫn ở đó */
+    top: 20px;
+    left: 20px;
+    color: white;
+    cursor: pointer;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 30px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-family: 'Orbitron', sans-serif;
+    transition: 0.3s;
+    backdrop-filter: blur(5px);
+}
+
+.watch .back:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #00d4ff;
+    color: #00d4ff;
+}
+
+.watch .back span {
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/* Khu vực bao quanh video */
+.watch .video-wrapper {
+    width: 100%;
+    height: 70vh;
+    /* Video chiếm 70% màn hình */
+    background-color: black;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.watch .video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    /* Đảm bảo thấy hết khung hình video */
+}
+
+/* Khu vực bình luận bên dưới */
+.watch .comment-section {
+    width: 100%;
+    max-width: 1000px;
+    /* Giới hạn chiều rộng cho đẹp */
+    margin: 0 auto;
+    /* Căn giữa */
+    padding-bottom: 50px;
+}

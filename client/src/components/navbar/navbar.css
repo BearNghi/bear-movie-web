@@ -1,0 +1,105 @@
+.navbar {
+    width: 100%;
+    color: white;
+    font-size: 14px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    background: linear-gradient(to top, transparent 0%, rgba(0, 0, 0, 0.3) 50%);
+    transition: background-color 0.5s ease;
+    /* Hiệu ứng chuyển màu mượt mà */
+}
+
+/* Khi cuộn chuột xuống thì thêm class này */
+.navbar.scrolled {
+    background-color: #0b0b0b;
+}
+
+.navbar .container {
+    padding: 0px 50px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Phần bên trái */
+.navbar .left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar .logo {
+    color: #e50914;
+    /* Màu đỏ BearMovie */
+    font-size: 25px;
+    font-weight: bold;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.navbar .left span {
+    cursor: pointer;
+}
+
+/* Phần bên phải */
+.navbar .right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.navbar .right .icon {
+    margin: 0 15px;
+    cursor: pointer;
+}
+
+.navbar .right img {
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* Menu Profile (Dropdown) */
+.navbar .profile {
+    position: relative;
+    /* Để menu con bám theo */
+    cursor: pointer;
+}
+
+.navbar .profile .options {
+    display: none;
+    /* Mặc định ẩn */
+    background-color: #0b0b0b;
+    border-radius: 5px;
+    position: absolute;
+    top: 30px;
+    /* Cách top một chút */
+    right: 0;
+    flex-direction: column;
+    z-index: 1000;
+}
+
+/* Khi di chuột vào profile thì hiện options */
+.navbar .profile:hover .options {
+    display: flex;
+}
+
+.navbar .options span {
+    padding: 10px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+    /* Không xuống dòng */
+}
+
+.navbar .options span:hover {
+    background-color: #333;
+}
+
+.navbar .link {
+    text-decoration: none;
+    color: white;
+}
