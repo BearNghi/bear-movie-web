@@ -4,14 +4,12 @@
     background-color: #0b0b0b;
     position: relative;
     overflow-y: auto;
-    /* Cho phép lăn chuột dọc để xem bình luận */
     overflow-x: hidden;
 }
 
-/* Nút quay lại */
+
 .watch .back {
     position: fixed;
-    /* Ghim nút này để khi lăn chuột nó vẫn ở đó */
     top: 20px;
     left: 20px;
     color: white;
@@ -40,11 +38,10 @@
     font-weight: bold;
 }
 
-/* Khu vực bao quanh video */
+
 .watch .video-wrapper {
     width: 100%;
     height: 70vh;
-    /* Video chiếm 70% màn hình */
     background-color: black;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -53,20 +50,11 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    /* Đảm bảo thấy hết khung hình video */
 }
 
-/* Khu vực bình luận bên dưới */
-.watch .comment-section {
-    width: 100%;
-    max-width: 1000px;
-    /* Giới hạn chiều rộng cho đẹp */
-    margin: 0 auto;
-    /* Căn giữa */
-    padding-bottom: 50px;
-}
 
 .rating-section {
+    width: 100%;
     max-width: 1000px;
     margin: 20px auto;
     padding: 20px;
@@ -77,28 +65,32 @@
     justify-content: space-between;
     color: white;
     border: 1px solid #333;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
 .rating-left h2 {
     margin: 0;
-    font-size: 24px;
+    font-size: 28px;
+    color: white;
+    text-transform: uppercase;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .avg-rating {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 10px;
     margin-top: 5px;
-    font-size: 18px;
-    color: #e50914;
+    font-size: 20px;
     font-weight: bold;
+    color: #e50914;
 }
 
 .avg-rating small {
     color: gray;
     font-weight: normal;
     font-size: 14px;
-    margin-left: 5px;
 }
 
 .rating-right {
@@ -106,4 +98,16 @@
     flex-direction: column;
     align-items: flex-end;
     gap: 5px;
+}
+
+.rating-right span {
+    font-size: 14px;
+    color: #ccc;
+}
+
+.watch .comment-section {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding-bottom: 50px;
 }
