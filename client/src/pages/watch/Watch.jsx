@@ -1,20 +1,57 @@
-import { ArrowBackOutlined } from "@mui/icons-material";
+import { ArrowBackOutlined, Star } from "@mui/icons-material";
 import { Link, useLocation } from "react-router-dom";
 import Comments from "../../components/comments/Comments";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { Rating } from "@mui/material"; // Thư viện sao
 import "./watch.css";
 
 export default function Watch() {
-  // Lấy dữ liệu phim nếu được truyền từ trang chủ (nếu không có thì dùng ID giả để test)
   const location = useLocation();
   const movie = location.state?.movie;
+  const movieId = movie?._id || "test_movie_id_matrix"; // ID phim
 
-  // ID này dùng để lưu bình luận vào Database. 
-  // Nếu chưa có phim thật, nó sẽ lưu vào id "test_movie_id"
-  const movieId = movie?._id || "test_movie_id_matrix";
+  const [value, setValue] = useState(0); // Điểm của tôi
+  const [avgRating, setAvgRating] = useState(0); // Điểm trung bình
+  const [count, setCount] = useState(0); // Số người chấm
+
+  // Lấy thông tin user
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  useEffect(() => {
+    const getRatings = async () => {
+      try {
+        // 1. Lấy điểm trung bình
+        const resAvg = await axios.get(`http://localhost:5000/api/ratings/${movieId}`);
+        setAvgRating(resAvg.data.avg);
+        setCount(resAvg.data.count);
+
+        // 2. Lấy điểm tôi đã chấm (nếu đã đăng nhập)
+        if (user) {
+          const resMy = await axios.get(`http://localhost:5000/api/ratings/my/${movieId}/${user._id}`);
+          setValue(resMy.data);
+        }
+      } catch (err) { console.log(err); }
+    };
+    getRatings();
+  }, [movieId, user?._id]);
+
+  const handleRatingChange = async (event, newValue) => {
+    if (!user) return alert("Vui lòng đăng nhập để đánh giá!");
+    setValue(newValue);
+    try {
+      await axios.post("http://localhost:5000/api/ratings", {
+        movieId: movieId,
+        number: newValue
+      }, {
+        headers: { token: "Bearer " + user.accessToken }
+      });
+      alert("Cảm ơn bạn đã đánh giá!");
+    } catch (err) { console.log(err); }
+  };
 
   return (
     <div className="watch">
-      {/* Nút Quay lại */}
       <Link to="/">
         <div className="back">
           <ArrowBackOutlined />
@@ -22,7 +59,6 @@ export default function Watch() {
         </div>
       </Link>
 
-      {/* Khu vực Video */}
       <div className="video-wrapper">
         <video
           className="video"
@@ -33,7 +69,32 @@ export default function Watch() {
         />
       </div>
 
-      {/* Khu vực Bình luận (Nằm dưới video) */}
+      {/* --- KHU VỰC ĐÁNH GIÁ SAO --- */}
+      <div className="rating-section">
+        <div className="rating-left">
+          <h2>{movie?.title || "The Matrix"}</h2>
+          <div className="avg-rating">
+            <Star className="star-icon" />
+            <span>{avgRating}/5</span>
+            <small>({count} lượt đánh giá)</small>
+          </div>
+        </div>
+
+        <div className="rating-right">
+          <span>Đánh giá của bạn:</span>
+          <Rating
+            name="simple-controlled"
+            value={value}
+            onChange={handleRatingChange}
+            size="large"
+            sx={{
+              "& .MuiRating-iconFilled": { color: "#e50914" }, // Sao màu đỏ
+              "& .MuiRating-iconEmpty": { color: "gray" }
+            }}
+          />
+        </div>
+      </div>
+
       <div className="comment-section">
         <Comments movieId={movieId} />
       </div>

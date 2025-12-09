@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const dotenv = require('dotenv');
 const commentRoute = require("./routes/comments");
-
+const ratingRoute = require("./routes/ratings");
 // Import đầy đủ các routes
 const authRoute = require("./routes/auth");
 const movieRoute = require("./routes/movies");
@@ -35,3 +35,4 @@ app.listen(5000, () => {
 });
 app.use("/api/comments", commentRoute);
 app.use("/api/users", userRoute);
+app.use("/api/ratings", ratingRoute);

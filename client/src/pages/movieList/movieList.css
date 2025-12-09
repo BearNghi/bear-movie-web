@@ -1,0 +1,67 @@
+.movieList {
+    flex: 4;
+    padding: 20px;
+    background-color: #0b0b0b;
+    color: white;
+    min-height: 100vh;
+    padding-top: 80px;
+    /* Tránh navbar che */
+}
+
+.movieListTitleContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.movieAddButton {
+    width: 120px;
+    border: none;
+    padding: 10px;
+    background-color: #e50914;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.movieTable {
+    width: 100%;
+    border-spacing: 0 15px;
+    /* Khoảng cách giữa các hàng */
+}
+
+.movieTable th {
+    text-align: left;
+    color: gray;
+}
+
+.movieTable td {
+    background-color: #1a1a1a;
+    /* Màu nền từng dòng */
+    padding: 10px;
+}
+
+.movieUser {
+    display: flex;
+    align-items: center;
+}
+
+.movieImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.movieListDelete {
+    color: #e50914;
+    cursor: pointer;
+}
+
+.movieListDelete:hover {
+    transform: scale(1.2);
+}

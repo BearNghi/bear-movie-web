@@ -65,3 +65,45 @@
     /* Căn giữa */
     padding-bottom: 50px;
 }
+
+.rating-section {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    border: 1px solid #333;
+}
+
+.rating-left h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.avg-rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 5px;
+    font-size: 18px;
+    color: #e50914;
+    font-weight: bold;
+}
+
+.avg-rating small {
+    color: gray;
+    font-weight: normal;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.rating-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}

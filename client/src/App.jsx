@@ -5,6 +5,7 @@ import Login from "./pages/login/Login";
 import Watch from "./pages/watch/Watch"; // <--- Import trang Watch
 import NewMovie from "./pages/admin/NewMovie";
 import Profile from "./pages/profile/Profile";
+import MovieList from "./pages/movieList/MovieList";
 import {
   BrowserRouter as Router,
   Routes,
@@ -18,11 +19,11 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-
-        {/* Thêm đường dẫn trang xem phim */}
         <Route path="/watch" element={<Watch />} />
         <Route path="/admin/add" element={<NewMovie />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/admin/movies" element={<MovieList />} />
+        <Route path="/admin/movies" element={<MovieList />} />
       </Routes>
     </Router>
   );
