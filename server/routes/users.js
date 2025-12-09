@@ -2,6 +2,7 @@ const router = require("express").Router();
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const verify = require("../verifyToken");
+const Movie = require("../models/Movie");
 
 // CẬP NHẬT THÔNG TIN (Đổi pass, avatar)
 router.put("/:id", verify, async (req, res) => {
@@ -37,5 +38,38 @@ router.get("/find/:id", async (req, res) => {
         res.status(500).json(err);
     }
 });
+// 1. THÊM / XÓA PHIM KHỎI DANH SÁCH YÊU THÍCH
+router.put("/mylist/:movieId", verify, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id);
+        const movieId = req.params.movieId;
 
+        // Kiểm tra: Nếu phim đã có trong list thì xóa, chưa có thì thêm
+        if (user.myList.includes(movieId)) {
+            await user.updateOne({ $pull: { myList: movieId } });
+            res.status(200).json("Đã xóa khỏi danh sách!");
+        } else {
+            await user.updateOne({ $push: { myList: movieId } });
+            res.status(200).json("Đã thêm vào danh sách!");
+        }
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+// 2. LẤY TOÀN BỘ PHIM TRONG DANH SÁCH CỦA TÔI
+router.get("/mylist/all", verify, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id);
+        // Tìm tất cả phim có ID nằm trong mảng myList của user
+        const list = await Promise.all(
+            user.myList.map((id) => {
+                return Movie.findById(id);
+            })
+        );
+        res.status(200).json(list);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 module.exports = router;

@@ -8,6 +8,7 @@ import MovieList from "./pages/movieList/MovieList";
 import NewList from "./pages/newList/NewList"; // Trang tạo list bạn vừa làm
 import Profile from "./pages/profile/Profile";
 import Search from "./pages/search/Search";
+import MyList from "./pages/myList/MyList";
 import {
   BrowserRouter as Router,
   Routes,
@@ -43,6 +44,7 @@ const App = () => {
             <Route path="/admin/movies" element={<MovieList />} />
             <Route path="/admin/newList" element={<NewList />} />
             <Route path="/search" element={<Search />} />
+            <Route path="/mylist" element={<MyList />} />
           </>
         )}
       </Routes>

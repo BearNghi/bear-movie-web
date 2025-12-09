@@ -30,7 +30,7 @@ const Navbar = () => {
                     <Link to="/series" className="link"><span>Phim bộ</span></Link>
                     <Link to="/movies" className="link"><span>Phim lẻ</span></Link>
                     <span>Mới & Phổ biến</span>
-                    <span>Danh sách của tôi</span>
+                    <Link to="/mylist" className="link"></Link><span>Danh sách của tôi</span>
                 </div>
 
                 <div className="right">

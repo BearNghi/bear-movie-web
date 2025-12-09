@@ -1,0 +1,32 @@
+.myListPage {
+    background-color: #0b0b0b;
+    min-height: 100vh;
+    color: white;
+}
+
+.myListContainer {
+    padding-top: 100px;
+    padding-left: 50px;
+}
+
+.myListContainer h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #e50914;
+}
+
+.myListGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.myListItem {
+    margin-right: 5px;
+    margin-bottom: 40px;
+}
+
+.empty {
+    color: gray;
+    font-size: 18px;
+}
