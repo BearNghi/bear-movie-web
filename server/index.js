@@ -12,13 +12,10 @@ const userRoute = require("./routes/users");
 dotenv.config();
 
 const app = express();
-app.use(cors({
-    origin: "http://localhost:5173",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true
-}));
 
+app.use(cors());
 app.use(express.json());
+
 
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("✅ Đã kết nối MongoDB thành công!"))
@@ -28,10 +25,12 @@ mongoose.connect(process.env.MONGO_URI)
 app.use("/api/auth", authRoute);
 app.use("/api/movies", movieRoute);
 app.use("/api/lists", listRoute);
-
-app.listen(5000, () => {
-    console.log("Server đang chạy tại http://localhost:5000");
-});
 app.use("/api/comments", commentRoute);
 app.use("/api/users", userRoute);
 app.use("/api/ratings", ratingRoute);
+
+
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`Server đang chạy tại port ${PORT}`);
+});
