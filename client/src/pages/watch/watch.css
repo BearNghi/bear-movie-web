@@ -112,9 +112,8 @@
     padding-bottom: 50px;
 }
 
-/* ... (Giữ nguyên các code cũ) ... */
 
-/* Thêm vào cuối file */
+
 .rating-left .title-row {
     display: flex;
     align-items: center;
@@ -140,10 +139,9 @@
     background-color: rgba(255, 255, 255, 0.8);
 }
 
-/* Khi đã lưu thì đổi màu nút */
 .save-btn.saved {
     background-color: #e50914;
-    /* Màu đỏ */
+
     color: white;
 }
 

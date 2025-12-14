@@ -1,29 +1,26 @@
 import { useState } from "react";
-import { Link } from "react-router-dom"; // Bỏ useNavigate đi, không cần nữa
+import { Link } from "react-router-dom";
 import axios from "axios";
+import BASE_API_URL from "../../config";
 import "./login.css";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    // const navigate = useNavigate(); // <-- Xóa hoặc comment dòng này
-
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const res = await axios.post("http://localhost:5000/api/auth/login", {
+            const res = await axios.post(`${BASE_API_URL}/auth/login`, {
                 email,
                 password
             });
 
-            // Lưu thông tin user
             localStorage.setItem("user", JSON.stringify(res.data));
 
             alert("Đăng nhập thành công!");
 
-            // THAY ĐỔI Ở ĐÂY: Dùng window.location để tải lại trang
-            // Cách này giúp App.jsx đọc lại được localStorage ngay lập tức
+
             window.location.replace("/");
 
         } catch (err) {
@@ -32,9 +29,9 @@ export default function Login() {
         }
     };
 
+
     return (
         <div className="login">
-            {/* ... (Phần giao diện giữ nguyên không đổi) ... */}
             <div className="top">
                 <div className="wrapper">
                     <h2 className="logo">BEARMOVIE</h2>

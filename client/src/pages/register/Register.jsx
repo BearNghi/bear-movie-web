@@ -1,6 +1,7 @@
-import { useState, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom"; // Thêm useNavigate để chuyển trang
-import axios from "axios"; // Thư viện gọi điện cho Server
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import BASE_API_URL from "../../config";
 import "./register.css";
 
 export default function Register() {
@@ -8,29 +9,29 @@ export default function Register() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const navigate = useNavigate(); // Công cụ chuyển trang
+    const navigate = useNavigate();
 
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
-            // Gửi thông tin về Server (Cổng 5000)
-            await axios.post("http://localhost:5000/api/auth/register", {
+
+            await axios.post(`${BASE_API_URL}/auth/register`, {
                 email,
                 username,
                 password,
             });
 
             alert("Đăng ký thành công! Hãy đăng nhập nhé.");
-            navigate("/login"); // Chuyển sang trang đăng nhập ngay
+            navigate("/login");
         } catch (err) {
             console.log(err);
             alert("Lỗi đăng ký! Có thể email hoặc tên đã bị trùng.");
         }
     };
 
+
     return (
         <div className="register">
-            {/* ... (Giữ nguyên phần giao diện cũ) ... */}
             <div className="top">
                 <div className="wrapper">
                     <h2 className="logo">BEARMOVIE</h2>

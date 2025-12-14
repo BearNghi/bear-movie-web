@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import "./newList.css";
-import { useNavigate } from "react-router-dom"; // Dùng useNavigate thay cho useHistory
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import BASE_API_URL from "../../config";
 
 export default function NewList() {
     const [list, setList] = useState(null);
@@ -12,7 +13,7 @@ export default function NewList() {
         const getMovies = async () => {
             try {
                 const user = JSON.parse(localStorage.getItem("user"));
-                const res = await axios.get("http://localhost:5000/api/movies", {
+                const res = await axios.get(`${BASE_API_URL}/movies`, {
                     headers: { token: "Bearer " + user.accessToken },
                 });
                 setMovies(res.data);
@@ -28,7 +29,7 @@ export default function NewList() {
         setList({ ...list, [e.target.name]: value });
     };
 
-    // Hàm xử lý chọn nhiều phim (Giữ phím Ctrl để chọn nhiều)
+
     const handleSelect = (e) => {
         let value = Array.from(e.target.selectedOptions, (option) => option.value);
         setList({ ...list, content: value });
@@ -38,15 +39,16 @@ export default function NewList() {
         e.preventDefault();
         try {
             const user = JSON.parse(localStorage.getItem("user"));
-            await axios.post("http://localhost:5000/api/lists", list, {
+            await axios.post(`${BASE_API_URL}/lists`, list, {
                 headers: { token: "Bearer " + user.accessToken },
             });
             alert("Tạo danh sách thành công!");
-            navigate("/"); // Quay về trang chủ để xem kết quả
+            navigate("/");
         } catch (err) {
             alert("Lỗi! Hãy kiểm tra lại.");
         }
     };
+
 
     return (
         <div className="newList">
@@ -84,7 +86,7 @@ export default function NewList() {
                 <div className="formRight">
                     <div className="addProductItem">
                         <label>Chọn các phim có trong danh sách:</label>
-                        {/* Giữ phím Ctrl (Windows) hoặc Command (Mac) để chọn nhiều phim */}
+
                         <select multiple name="content" onChange={handleSelect} style={{ height: "280px" }}>
                             {movies.map((movie) => (
                                 <option key={movie._id} value={movie._id}>

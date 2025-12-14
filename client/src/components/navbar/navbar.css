@@ -51,7 +51,7 @@
     cursor: pointer;
 }
 
-/* QUAN TRỌNG: Dòng này giúp Avatar nhỏ lại */
+
 .navbar .right img {
     width: 30px;
     height: 30px;
@@ -96,7 +96,7 @@
     text-decoration: none;
 }
 
-/* --- PHẦN MỚI: Ô TÌM KIẾM --- */
+
 .searchBox {
     display: flex;
     align-items: center;

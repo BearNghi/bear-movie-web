@@ -7,7 +7,7 @@
 
 .searchContainer {
     padding-top: 100px;
-    /* Tránh bị Navbar che */
+
     padding-left: 50px;
     padding-right: 50px;
 }
@@ -29,7 +29,7 @@
 }
 
 .searchItem {
-    /* Tạo khoảng cách để ListItem hiển thị đẹp */
+
     margin-right: 5px;
     margin-bottom: 40px;
 }

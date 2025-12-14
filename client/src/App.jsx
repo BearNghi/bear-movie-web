@@ -18,13 +18,13 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        {/* MẶC ĐỊNH: Chưa đăng nhập -> Vào Login. Đã đăng nhập -> Vào Home */}
+
         <Route path="/" element={user ? <Home /> : <Navigate to="/login" />} />
 
         <Route path="/register" element={!user ? <Register /> : <Navigate to="/" />} />
         <Route path="/login" element={!user ? <Login /> : <Navigate to="/" />} />
 
-        {/* CÁC TRANG DÀNH CHO NGƯỜI ĐÃ ĐĂNG NHẬP */}
+
         {user && (
           <>
             <Route path="/movies" element={<Home type="movie" />} />
@@ -34,7 +34,7 @@ const App = () => {
             <Route path="/search" element={<Search />} />
             <Route path="/mylist" element={<MyList />} />
 
-            {/* KHU VỰC ADMIN */}
+
             <Route path="/admin/add" element={<NewMovie />} />
             <Route path="/admin/movies" element={<MovieList />} />
             <Route path="/admin/movie/:movieId" element={<EditMovie />} />

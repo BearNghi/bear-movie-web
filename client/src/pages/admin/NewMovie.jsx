@@ -2,6 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import "./newMovie.css";
 import { Link } from "react-router-dom";
+import BASE_API_URL from "../../config";
 
 export default function NewMovie() {
     const [movie, setMovie] = useState({
@@ -26,7 +27,7 @@ export default function NewMovie() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            // Lấy token của Admin đang đăng nhập
+
             const user = JSON.parse(localStorage.getItem("user"));
 
             if (!user || !user.isAdmin) {
@@ -34,17 +35,18 @@ export default function NewMovie() {
                 return;
             }
 
-            await axios.post("http://localhost:5000/api/movies", movie, {
+            await axios.post(`${BASE_API_URL}/movies`, movie, {
                 headers: { token: "Bearer " + user.accessToken },
             });
 
             alert("Đăng phim thành công!");
-            // Reset form hoặc chuyển trang
+
         } catch (err) {
             console.log(err);
             alert("Lỗi khi đăng phim. Kiểm tra lại quyền Admin.");
         }
     };
+
 
     return (
         <div className="newMovie">
@@ -73,7 +75,7 @@ export default function NewMovie() {
                     <input type="text" placeholder="Description" name="desc" onChange={handleChange} />
                 </div>
 
-                {/* Trong thực tế sẽ dùng nút Upload ảnh, ở đây ta nhập Link ảnh cho nhanh */}
+
                 <div className="addProductItem">
                     <label>Link Ảnh Bìa (To)</label>
                     <input type="text" placeholder="URL Image" name="img" onChange={handleChange} />

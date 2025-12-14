@@ -8,7 +8,7 @@
 
 .profileContainer {
     padding-top: 100px;
-    /* Tránh bị Navbar che */
+
     display: flex;
     flex-direction: column;
     align-items: center;
