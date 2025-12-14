@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Comment = require("../models/Comment");
+const Comment = require("../models/comment");
 const verify = require("../verifyToken");
 
 
@@ -9,7 +9,7 @@ router.post("/", verify, async (req, res) => {
         const savedComment = await newComment.save();
         res.status(200).json(savedComment);
     } catch (err) {
-        res.status(500).json(err);
+        res.status(500).jsons(err);
     }
 });
 
