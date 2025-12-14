@@ -1,12 +1,22 @@
 .home {
     background-color: #0b0b0b;
     overflow: hidden;
-    min-height: 200vh;
-    /* Làm trang dài ra để test cuộn chuột */
+    min-height: 100vh;
 }
 
-.test-content {
-    padding-top: 100px;
-    text-align: center;
-    color: white;
+/* Đẩy phần danh sách xuống dưới để không bị Banner đè lên */
+.list-container {
+    position: relative;
+    z-index: 5;
+    /* Nổi lên trên nền */
+    margin-top: -150px;
+    /* Kéo trùm lên phần dưới của banner một chút cho đẹp */
+    padding-bottom: 50px;
+}
+
+/* Nếu màn hình nhỏ thì chỉnh lại margin */
+@media only screen and (max-width: 768px) {
+    .list-container {
+        margin-top: 0;
+    }
 }

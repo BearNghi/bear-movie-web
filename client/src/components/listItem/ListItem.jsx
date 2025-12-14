@@ -1,58 +1,22 @@
 import "./listItem.css";
-import { PlayArrow, Add, ThumbUpAltOutlined, ThumbDownOutlined, Check } from "@mui/icons-material";
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 
-export default function ListItem({ index, item }) {
-    const [isHovered, setIsHovered] = useState(false);
-    const [added, setAdded] = useState(false); // Trạng thái đã thêm hay chưa
-
-    const handleAdd = async (e) => {
-        e.preventDefault(); // Chặn việc chuyển trang khi bấm nút +
-        try {
-            const user = JSON.parse(localStorage.getItem("user"));
-            await axios.put(`http://localhost:5000/api/users/mylist/${item._id}`, {}, {
-                headers: { token: "Bearer " + user.accessToken }
-            });
-            setAdded(!added); // Đổi trạng thái icon
-            alert(added ? "Đã xóa khỏi danh sách!" : "Đã thêm vào danh sách!");
-        } catch (err) { console.log(err); }
-    };
+export default function ListItem({ item }) {
+    // CHÚ Ý: Đã loại bỏ hoàn toàn các state (isHovered) và các hàm xử lý sự kiện chuột (onMouseEnter...)
+    // Đã loại bỏ phần video trailer và các icon thông tin bổ sung.
 
     return (
-        <Link to="/watch" state={{ movie: item }} className="link">
-            <div
-                className="listItem"
-                style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
-            >
-                <img src={item.img || "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop"} alt="" />
-
-                {isHovered && (
-                    <>
-                        <video src={item.trailer} autoPlay={true} loop />
-                        <div className="itemInfo">
-                            <div className="icons">
-                                <PlayArrow className="icon play" />
-                                {/* Nút THÊM / XÓA */}
-                                <div className="icon" onClick={handleAdd}>
-                                    {added ? <Check /> : <Add />}
-                                </div>
-                                <ThumbUpAltOutlined className="icon" />
-                                <ThumbDownOutlined className="icon" />
-                            </div>
-                            <div className="itemInfoTop">
-                                <span>{item.duration || "1h 30m"}</span>
-                                <span className="limit">+{item.limit || "16"}</span>
-                                <span>{item.year || "2024"}</span>
-                            </div>
-                            <div className="desc">{item.desc}</div>
-                            <div className="genre">{item.genre}</div>
-                        </div>
-                    </>
-                )}
+        // Bọc toàn bộ item trong thẻ Link.
+        // Khi click vào bất kỳ đâu trên ảnh này, nó sẽ chuyển hướng đến trang "/watch"
+        <Link to="/watch" state={{ movie: item }}>
+            <div className="listItem">
+                {/* Chỉ hiển thị duy nhất ảnh thumbnail */}
+                {/* Sử dụng imgSm (ảnh nhỏ dọc) ưu tiên, nếu không có thì dùng ảnh bìa */}
+                <img
+                    src={item?.imgSm || item?.img || "https://via.placeholder.com/300x200?text=No+Image"}
+                    alt={item?.title}
+                />
+                {/* Không còn phần thông tin ẩn hiện ra ở đây nữa */}
             </div>
         </Link>
     );

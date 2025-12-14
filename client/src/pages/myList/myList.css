@@ -2,31 +2,51 @@
     background-color: #0b0b0b;
     min-height: 100vh;
     color: white;
+    font-family: 'Roboto', sans-serif;
 }
 
 .myListContainer {
     padding-top: 100px;
+    /* Tránh bị Navbar che */
     padding-left: 50px;
+    padding-right: 50px;
 }
 
 .myListContainer h1 {
-    margin-bottom: 20px;
     font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 20px;
     color: #e50914;
+    /* Màu đỏ thương hiệu */
 }
 
+/* Dạng lưới: Tự động xuống dòng khi hết chỗ */
 .myListGrid {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    /* Khoảng cách giữa các phim */
 }
 
 .myListItem {
-    margin-right: 5px;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    transition: transform 0.2s;
 }
 
-.empty {
+.myListItem:hover {
+    transform: scale(1.05);
+    /* Phóng to nhẹ khi di chuột */
+    z-index: 9;
+}
+
+/* Giao diện khi danh sách trống */
+.empty-state {
+    text-align: center;
+    margin-top: 50px;
     color: gray;
-    font-size: 18px;
+}
+
+.empty-state h2 {
+    color: white;
+    margin-bottom: 10px;
 }

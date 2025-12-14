@@ -11,11 +11,14 @@ export default function MyList() {
         const getMyList = async () => {
             try {
                 const user = JSON.parse(localStorage.getItem("user"));
+                // Gọi API lấy danh sách phim đã lưu của user
                 const res = await axios.get("http://localhost:5000/api/users/mylist/all", {
                     headers: { token: "Bearer " + user.accessToken }
                 });
                 setMovies(res.data);
-            } catch (err) { console.log(err); }
+            } catch (err) {
+                console.log(err);
+            }
         };
         getMyList();
     }, []);
@@ -25,14 +28,22 @@ export default function MyList() {
             <Navbar />
             <div className="myListContainer">
                 <h1>Danh sách của tôi</h1>
-                <div className="myListGrid">
-                    {movies.map((item, i) => (
-                        <div className="myListItem" key={i}>
-                            <ListItem index={i} item={item} />
-                        </div>
-                    ))}
-                    {movies.length === 0 && <span className="empty">Bạn chưa lưu phim nào cả.</span>}
-                </div>
+
+                {/* Kiểm tra nếu có phim thì hiện, không thì báo trống */}
+                {movies.length > 0 ? (
+                    <div className="myListGrid">
+                        {movies.map((item, i) => (
+                            <div className="myListItem" key={item._id || i}>
+                                <ListItem item={item} />
+                            </div>
+                        ))}
+                    </div>
+                ) : (
+                    <div className="empty-state">
+                        <h2>Bạn chưa lưu phim nào cả!</h2>
+                        <p>Hãy vào xem phim và bấm nút "Lưu Phim" để thêm vào đây nhé.</p>
+                    </div>
+                )}
             </div>
         </div>
     );

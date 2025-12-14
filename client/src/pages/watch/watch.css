@@ -111,3 +111,42 @@
     margin: 0 auto;
     padding-bottom: 50px;
 }
+
+/* ... (Giữ nguyên các code cũ) ... */
+
+/* Thêm vào cuối file */
+.rating-left .title-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.save-btn {
+    padding: 8px 15px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    background-color: white;
+    color: black;
+    transition: all 0.2s ease;
+}
+
+.save-btn:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Khi đã lưu thì đổi màu nút */
+.save-btn.saved {
+    background-color: #e50914;
+    /* Màu đỏ */
+    color: white;
+}
+
+.save-btn.saved:hover {
+    background-color: #c40812;
+}

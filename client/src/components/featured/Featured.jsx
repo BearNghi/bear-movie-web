@@ -2,12 +2,13 @@ import { Link } from "react-router-dom";
 import { InfoOutlined, PlayArrow } from "@mui/icons-material";
 import "./featured.css";
 
-export default function Featured({ type }) {
+// Nhận prop "movie" từ Home
+export default function Featured({ type, movie }) {
     return (
         <div className="featured">
             {type && (
                 <div className="category">
-                    <span>{type === "movie" ? "PHIM ĐIỆN ẢNH" : "PHIM BỘ"}</span>
+                    <span>{type === "movie" ? "PHIM LẺ" : "PHIM BỘ"}</span>
                     <select name="genre" id="genre">
                         <option>Thể loại</option>
                         <option value="action">Hành động</option>
@@ -17,35 +18,37 @@ export default function Featured({ type }) {
                 </div>
             )}
 
-            {/* Ảnh nền Full HD - Cyberpunk City */}
+            {/* Hiển thị ảnh phim mới nhất */}
             <img
-                src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=2525&auto=format&fit=crop"
+                src={movie?.img || "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop"}
                 alt=""
                 className="featuredImg"
             />
 
-            {/* Lớp phủ màu để làm dịu ảnh nền */}
             <div className="overlay"></div>
 
-            {/* Hộp thông tin (Glass Card) */}
             <div className="info-card">
-                {/* Logo phim dạng chữ Neon */}
-                <h1 className="movie-title">THE MATRIX</h1>
+                {/* Logo hoặc Tên phim */}
+                {movie?.imgTitle ? (
+                    <img src={movie.imgTitle} alt={movie.title} style={{ width: "100%", marginBottom: "10px" }} />
+                ) : (
+                    <h1 className="movie-title">{movie?.title || "Phim Mới Nhất"}</h1>
+                )}
 
                 <div className="meta-data">
-                    <span className="match">98% Phù hợp</span>
-                    <span className="year">1999</span>
-                    <span className="age">18+</span>
-                    <span className="season">Sci-Fi Masterpiece</span>
+                    <span className="match">Vừa cập nhật</span>
+                    <span className="year">{movie?.year || "2025"}</span>
+                    <span className="age">{movie?.limit || "16"}+</span>
+                    <span className="season">{movie?.genre || "Phim Hot"}</span>
                 </div>
 
                 <span className="desc">
-                    Trong một tương lai phản địa đàng, nhân loại bị mắc kẹt trong thực tế mô phỏng tên là Ma Trận. Neo - một hacker tài năng - là người được chọn để giải phóng loài người.
+                    {movie?.desc || "Chưa có mô tả cho bộ phim này..."}
                 </span>
 
                 <div className="buttons">
-                    {/* Bọc nút play bằng thẻ Link */}
-                    <Link to="/watch">
+                    {/* Bấm xem ngay */}
+                    <Link to="/watch" state={{ movie: movie }}>
                         <button className="play">
                             <PlayArrow />
                             <span>XEM NGAY</span>
