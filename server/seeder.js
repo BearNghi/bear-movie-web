@@ -5,7 +5,6 @@ const List = require("./models/List");
 
 dotenv.config();
 
-// Dữ liệu phim mẫu (Cyberpunk & Sci-Fi)
 const sampleMovies = [
     {
         title: "The Matrix",
@@ -66,24 +65,19 @@ const seedDB = async () => {
         await mongoose.connect(process.env.MONGO_URI);
         console.log("✅ Đã kết nối DB để nạp dữ liệu...");
 
-        // Xóa dữ liệu cũ để tránh trùng lặp
         await Movie.deleteMany({});
         await List.deleteMany({});
 
-        // Thêm phim mới
+
         const createdMovies = await Movie.insertMany(sampleMovies);
         console.log("🎬 Đã thêm 4 bộ phim mẫu!");
 
-        // Tạo danh sách (Lấy ID của các phim vừa tạo để nhét vào danh sách)
-        // Để đơn giản cho Frontend sinh viên, ta lưu thẳng Object phim vào content (hoặc ID tuỳ logic)
-        // Ở đây ta lưu ID như chuẩn, nhưng Frontend sẽ cần sửa xíu để fetch. 
-        // -> Cách tối ưu cho sinh viên: Lưu thẳng object phim vào content để đỡ phải fetch nhiều lần
 
         const list1 = new List({
             title: "Phim Viễn Tưởng Hot",
             type: "movie",
             genre: "sci-fi",
-            content: createdMovies.map(m => m._id) // Lưu ID
+            content: createdMovies.map(m => m._id)
         });
 
         const list2 = new List({

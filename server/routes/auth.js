@@ -3,7 +3,7 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-// ĐĂNG KÝ
+
 router.post("/register", async (req, res) => {
     try {
         const salt = await bcrypt.genSalt(10);
@@ -20,7 +20,6 @@ router.post("/register", async (req, res) => {
     }
 });
 
-// ĐĂNG NHẬP
 router.post("/login", async (req, res) => {
     try {
         const user = await User.findOne({ email: req.body.email });

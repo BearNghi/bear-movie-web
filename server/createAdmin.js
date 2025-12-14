@@ -10,7 +10,6 @@ const createAdmin = async () => {
         await mongoose.connect(process.env.MONGO_URI);
         console.log("✅ Đã kết nối DB...");
 
-        // Xóa admin cũ nếu có để tránh trùng
         await User.findOneAndDelete({ email: "admin@gmail.com" });
 
         const salt = await bcrypt.genSalt(10);
@@ -21,7 +20,7 @@ const createAdmin = async () => {
             email: "admin@gmail.com",
             password: hashedPassword,
             profilePic: "https://i.pinimg.com/originals/e3/94/30/e39430434d2b8207188f880ac66c6411.png",
-            isAdmin: true, // <--- ĐÂY LÀ CHÌA KHÓA QUYỀN LỰC
+            isAdmin: true,
         });
 
         await newAdmin.save();

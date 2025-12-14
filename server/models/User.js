@@ -6,8 +6,8 @@ const UserSchema = new mongoose.Schema({
     password: { type: String, required: true },
     profilePic: { type: String, default: "" },
     isAdmin: { type: Boolean, default: false },
-    // --- THÊM DÒNG NÀY ---
-    myList: { type: [String], default: [] } // Mảng chứa ID các phim yêu thích
+
+    myList: { type: [String], default: [] }
 }, { timestamps: true });
 
 module.exports = mongoose.model("User", UserSchema);

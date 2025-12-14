@@ -2,7 +2,6 @@ const router = require("express").Router();
 const List = require("../models/List");
 const verify = require("../verifyToken");
 
-// Tạo danh sách mới (Admin)
 router.post("/", verify, async (req, res) => {
     if (req.user.isAdmin) {
         const newList = new List(req.body);
@@ -13,7 +12,7 @@ router.post("/", verify, async (req, res) => {
     } else { res.status(403).json("Không có quyền!"); }
 });
 
-// Lấy danh sách trang chủ
+
 router.get("/", async (req, res) => {
     const typeQuery = req.query.type;
     const genreQuery = req.query.genre;

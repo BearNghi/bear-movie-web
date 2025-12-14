@@ -23,7 +23,7 @@ router.get("/:movieId", async (req, res) => {
         if (ratings.length === 0) return res.status(200).json({ avg: 0, count: 0 });
 
         const sum = ratings.reduce((acc, curr) => acc + curr.number, 0);
-        const avg = (sum / ratings.length).toFixed(1); // Lấy 1 số lẻ (vd: 4.5)
+        const avg = (sum / ratings.length).toFixed(1);
 
         res.status(200).json({ avg: avg, count: ratings.length });
     } catch (err) {
